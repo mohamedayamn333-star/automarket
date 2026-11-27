@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="AutoMarket BY MOHAMED - منصة بيع وشراء السيارات">
+  <title>AutoMarket BY MOHAMED</title>
+
+  <!-- Favicon + social sharing -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e8b45b'/%3E%3Ctext x='32' y='46' font-size='40' font-weight='900' text-anchor='middle' fill='%23111' font-family='Arial,sans-serif'%3EA%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AutoMarket BY MOHAMED">
+  <meta property="og:description" content="AutoMarket BY MOHAMED - منصة بيع وشراء السيارات">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&amp;fit=crop&amp;w=1200&amp;q=85">
+  <meta property="og:locale" content="ar_EG">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800;900&family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="#" class="logo">
+      <span class="logo-icon" aria-hidden="true">A</span>
+      <span>AutoMarket <small>BY MOHAMED</small></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" data-i18n="home">الرئيسية</a>
+      <a href="#cars" data-i18n="cars">السيارات</a>
+      <a href="#about" data-i18n="about">من نحن</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="language-btn" id="languageBtn" lang="en">EN</button>
+      <button class="login-btn" id="loginBtn" data-i18n="login">تسجيل الدخول</button>
+      <button class="sell-btn" id="sellBtn" data-i18n="sell">+ أضف سيارة</button>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="القائمة" data-i18n-aria-label="menu"><span aria-hidden="true">☰</span></button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="eyebrow" data-i18n="heroTag">منصتك الأولى لعالم السيارات</span>
+        <h1 data-i18n="heroTitle" data-i18n-html>اعثر على سيارتك<br><span>المثالية</span> معنا.</h1>
+        <p data-i18n="heroText">
+          اكتشف السيارات المعروضة للبيع، وقارن الأسعار واختر سيارتك القادمة بسهولة.
+        </p>
+        <div class="hero-buttons">
+          <a href="#cars" class="primary-btn" data-i18n="browse">تصفح السيارات ←</a>
+          <button class="outline-btn" id="heroSellBtn" data-i18n="sellCar">اعرض سيارتك للبيع</button>
+        </div>
+        <div class="hero-stats">
+          <div><strong id="totalCars">0</strong><span data-i18n="statCars">سيارة معروضة</span></div>
+          <div><strong>24/7</strong><span data-i18n="statSupport">دعم متواصل</span></div>
+          <div><strong>100%</strong><span data-i18n="statEasy">سهولة الاستخدام</span></div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="سيارة فاخرة" data-i18n-alt="heroImageAlt" width="1200" height="800" fetchpriority="high">
+        <div class="image-label">
+          <span aria-hidden="true">✦</span>
+          <div><strong>AutoMarket</strong><small data-i18n="premium">تجربة سيارات مميزة</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search -->
+    <section class="search-section" id="cars">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow" data-i18n="find">ابحث عن سيارتك</span>
+          <h2 data-i18n="searchTitle">اكتشف مجموعتنا</h2>
+        </div>
+        <span class="results-count" id="resultsCount" aria-live="polite">0 سيارة</span>
+      </div>
+
+      <form class="search-panel" id="searchForm" role="search" aria-label="بحث" data-i18n-aria-label="search">
+        <div class="field">
+          <label for="brandFilter" data-i18n="brand">الماركة</label>
+          <select id="brandFilter">
+            <option value="all" data-i18n="allBrands">كل الماركات</option>
+            <option value="BMW">BMW</option>
+            <option value="Mercedes">Mercedes</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Hyundai">Hyundai</option>
+            <option value="Kia">Kia</option>
+            <option value="Nissan">Nissan</option>
+            <option value="Other" data-i18n="otherBrand">أخرى</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="priceFilter" data-i18n="maxPrice">أقصى سعر (جنيه)</label>
+          <select id="priceFilter">
+            <option value="all" data-i18n="anyPrice">أي سعر</option>
+            <option value="500000">500,000</option>
+            <option value="1000000">1,000,000</option>
+            <option value="2000000">2,000,000</option>
+            <option value="5000000">5,000,000</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="yearFilter" data-i18n="year">سنة الصنع</label>
+          <!-- The year options are added by script.js from the current year -->
+          <select id="yearFilter">
+            <option value="all" data-i18n="anyYear">كل السنوات</option>
+          </select>
+        </div>
+        <button type="submit" class="search-btn" id="searchBtn" data-i18n="search">بحث</button>
+      </form>
+
+      <div class="cars-toolbar">
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all" data-i18n="allCars">كل السيارات</button>
+          <button class="filter-tab" data-filter="featured" data-i18n="featured">مميزة</button>
+          <button class="filter-tab" data-filter="favorites" data-i18n="favorites">المفضلة ♡</button>
+        </div>
+        <select id="sortFilter" class="sort-select" aria-label="الترتيب" data-i18n-aria-label="sort">
+          <option value="default" data-i18n="sortDefault">الترتيب الافتراضي</option>
+          <option value="low" data-i18n="sortLow">السعر: الأقل أولاً</option>
+          <option value="high" data-i18n="sortHigh">السعر: الأعلى أولاً</option>
+          <option value="new" data-i18n="sortNew">الأحدث أولاً</option>
+        </select>
+      </div>
+
+      <div class="cars-grid" id="carsGrid"></div>
+      <div class="empty-state hidden" id="emptyState">
+        <span aria-hidden="true">🚘</span>
+        <h3 data-i18n="noCars">لا توجد سيارات مطابقة</h3>
+        <p data-i18n="tryAgain">جرّب تغيير خيارات البحث.</p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section" id="about">
+      <div class="section-heading centered">
+        <span class="eyebrow" data-i18n="whyUs">لماذا AutoMarket؟</span>
+        <h2 data-i18n="whyTitle">تجربة شراء أسهل وأذكى</h2>
+      </div>
+      <div class="features-grid">
+        <article class="feature-card">
+          <span aria-hidden="true">🔍</span>
+          <h3 data-i18n="feature1Title">بحث ذكي</h3>
+          <p data-i18n="feature1Text">اعثر على السيارة المناسبة باستخدام فلاتر البحث.</p>
+        </article>
+        <article class="feature-card">
+          <span aria-hidden="true">🚗</span>
+          <h3 data-i18n="feature2Title">اختيارات متنوعة</h3>
+          <p data-i18n="feature2Text">شاهد سيارات بموديلات وأسعار مختلفة.</p>
+        </article>
+        <article class="feature-card">
+          <span aria-hidden="true">🤝</span>
+          <h3 data-i18n="feature3Title">تواصل مباشر</h3>
+          <p data-i18n="feature3Text">تواصل مع البائع لمعرفة تفاصيل السيارة.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <a href="#" class="logo">
+      <span class="logo-icon" aria-hidden="true">A</span>
+      <span>AutoMarket <small>BY MOHAMED</small></span>
+    </a>
+    <p data-i18n="footerText">وجهتك لاكتشاف سيارتك القادمة.</p>
+    <span>© <span id="copyYear">2026</span> AutoMarket BY MOHAMED</span>
+  </footer>
+
+  <!-- Add Car Modal -->
+  <div class="modal hidden" id="sellModal">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="sellModalTitle">
+      <button type="button" class="close-btn" data-close="sellModal" aria-label="إغلاق" data-i18n-aria-label="close"><span aria-hidden="true">×</span></button>
+      <span class="eyebrow" data-i18n="newListing">إعلان جديد</span>
+      <h2 id="sellModalTitle" data-i18n="addCarTitle">أضف سيارتك للبيع</h2>
+      <form id="carForm">
+        <label for="carName" data-i18n="carName">اسم السيارة</label>
+        <input id="carName" required placeholder="BMW 320i" data-i18n-placeholder="carNamePlaceholder">
+        <label for="carBrand" data-i18n="carBrand">الماركة</label>
+        <select id="carBrand" required>
+          <option value="">--</option>
+          <option>BMW</option><option>Mercedes</option><option>Toyota</option>
+          <option>Hyundai</option><option>Kia</option><option>Nissan</option>
+          <option value="Other" data-i18n="otherBrand">أخرى</option>
+        </select>
+        <label for="carPrice" data-i18n="carPrice">السعر بالجنيه</label>
+        <input id="carPrice" type="number" min="1" inputmode="numeric" required>
+        <label for="carYear" data-i18n="carYear">سنة الصنع</label>
+        <!-- max is set by script.js from the current year -->
+        <input id="carYear" type="number" min="1990" inputmode="numeric" required>
+        <label for="carMileage" data-i18n="carMileage">المسافة المقطوعة (كم)</label>
+        <input id="carMileage" type="number" min="0" max="1000000" inputmode="numeric">
+        <label for="carLocation" data-i18n="carLocation">المحافظة / المدينة</label>
+        <input id="carLocation" required placeholder="القاهرة" data-i18n-placeholder="locationPlaceholder">
+        <label for="carImage" data-i18n="carImage">رابط صورة السيارة</label>
+        <input id="carImage" type="url" placeholder="https://example.com/car.jpg">
+        <label for="sellerPhone" data-i18n="sellerPhone">رقم التواصل</label>
+        <input id="sellerPhone" type="tel" inputmode="numeric" autocomplete="tel" required
+               pattern="(\+?20|0)?1[0125][0-9]{8}"
+               placeholder="01xxxxxxxxx" data-i18n-placeholder="phonePlaceholder"
+               title="أدخل رقم موبايل مصري مثل 01012345678" data-i18n-title="phoneHint">
+        <button type="submit" class="primary-btn full-btn" data-i18n="publish">نشر الإعلان</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal hidden" id="loginModal">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+      <button type="button" class="close-btn" data-close="loginModal" aria-label="إغلاق" data-i18n-aria-label="close"><span aria-hidden="true">×</span></button>
+      <span class="eyebrow">AutoMarket</span>
+      <h2 id="loginModalTitle" data-i18n="loginTitle">مرحباً بك</h2>
+      <p data-i18n="loginDemo">تسجيل الدخول الحقيقي سيتم تفعيله عند ربط قاعدة البيانات.</p>
+      <form id="loginForm">
+        <label for="loginEmail" data-i18n="email">البريد الإلكتروني</label>
+        <input type="email" id="loginEmail" autocomplete="email" placeholder="name@example.com">
+        <button type="submit" class="primary-btn full-btn" id="demoLogin" data-i18n="continue">متابعة</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Details Modal (content is filled by script.js) -->
+  <div class="modal hidden" id="detailsModal">
+    <div class="modal-box details-box" id="detailsContent" role="dialog" aria-modal="true" aria-labelledby="detailsTitle"></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
